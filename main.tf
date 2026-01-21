@@ -14,7 +14,7 @@ provider "google" {
 }
 
 
-resource "google_storage_bucket" "demo-bucket" {
+resource "google_storage_bucket" "zoomcamp2026-module1-bucketname" {
   name          = var.gcs_bucket_name
   location      = var.location
   force_destroy = true

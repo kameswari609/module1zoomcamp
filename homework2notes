@@ -1,0 +1,30 @@
+question 1--- Within the execution for Yellow Taxi data for the year 2020 and month 12: what is the uncompressed file size (i.e. the output file yellow_tripdata_2020-12.csv of the extract task)? (1 point)
+
+python -c "import urllib.request,gzip,io; url='https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/yellow_tripdata_2020-12.csv.gz'; data=urllib.request.urlopen(url).read(); size=0; f=gzip.GzipFile(fileobj=io.BytesIO(data));
+while True:
+    chunk=f.read(1024*1024)
+    if not chunk: break
+    size += len(chunk)
+print(size)"
+
+The uncompressed size of yellow_tripdata_2020-12.csv is 134,481,400 bytes (≈ 128.3 MB).
+
+Question 2. What is the rendered value of the variable file when the inputs taxi is set to green, year is set to 2020, and month is set to 04 during execution? (1 point)
+green_tripdata_2020-04.csv
+
+
+Question 3. How many rows are there for the Yellow Taxi data for all CSV files in the year 2020? (1 point)
+24,648,499 rows.
+
+Question 4 -How many rows are there for the Green Taxi data for all CSV files in the year 2020? (1 point)
+  1,734,051 rows.
+
+Question 5. How many rows are there for the Yellow Taxi data for the March 2021 CSV file? (1 point)
+  1,925,152 rows.
+
+  Question 6. How would you configure the timezone to New York in a Schedule trigger? (1 point)
+  triggers:
+  - id: my_schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 9 1 * *"
+    timezone: America/New_York

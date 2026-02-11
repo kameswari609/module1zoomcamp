@@ -1,0 +1,25 @@
+The result (the count) should be the same. The point of the homework is to compare bytes processed in the BigQuery job info:
+Non-partitioned: scans (almost) the whole table → many GB.
+Partitioned + clustered: scans only Q1 partitions and only blocks for those three bases → much fewer MB.
+So the file is showing you: same logic, same answer, but partitioning + clustering reduce how much data BigQuery has to read, 
+
+
+- Partition = divides data by time
+- Clustering = sorts data inside each partition
+- Grouping = aggregates data in a query
+
+Partition → contains many blocks
+   ↓
+Clustering → sorts blocks by vendorid, passenger_count
+   ↓
+Query → BigQuery reads block metadata
+   ↓
+Prunes blocks that don’t match
+   ↓
+Scans only the relevant blocks
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+Q4 ,ANSWER 4 
+  SELECT pickup_zone, SUM(revenue_monthly_total_amount) AS total_revenue FROM fct_monthly_zone_revenue WHERE EXTRACT(YEAR FROM month) = 2020 AND 
+  pickup_borough = 'Manhattan' GROUP BY pickup_zone ORDER BY total_revenue DESC LIMIT 1;
+
+
+ANSWER 5 
+SELECT 
+SUM(total_monthly_trips) AS total_trips_green_oct_2019 FROM `module3zoomcamp.dbt_prod.fct_monthly_zone_revenue` 
+  WHERE pickup_service_zone = 'Green' AND EXTRACT(YEAR FROM month) = 2019 AND EXTRACT(MONTH FROM month) = 10;
+
+ASWER 6
+  SELECT COUNT(*) FROM stg_fhv_tripdata WHERE dispatching_base_num IS NULL;
